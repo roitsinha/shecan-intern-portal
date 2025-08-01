@@ -1,3 +1,4 @@
+````markdown
 # SheCan Intern Portal — Full Stack Developer Internship Round 1 Task
 
 Thank you for the opportunity to apply for the Full Stack Developer Internship!
@@ -33,10 +34,31 @@ This project is a **basic fundraising intern portal** built with React on the fr
 
 ## Running the Project Locally
 
-1. Start backend server (runs on port 5000):
+### Start backend server
+
+Open a terminal, navigate to the backend folder, and run:
 
 ```bash
 cd backend
 npm install
-npm start
+node server.js
+```
+````
+
+This will start the backend server on `http://localhost:5000`.
+
+### Start frontend server
+
+Open another terminal, navigate to the frontend folder, and run:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+This will start the frontend development server, usually at `http://localhost:5173`.
+
+```
+
 ```
