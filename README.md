@@ -1,55 +1,75 @@
-````markdown
-# SheCan Intern Portal — Full Stack Developer Internship Round 1 Task
+---
 
-Thank you for the opportunity to apply for the Full Stack Developer Internship!
+# 🎯 SheCan Intern Portal — Full Stack Developer Internship (Round 1 Task)
 
-## Project Overview
+Thank you for the opportunity to apply for the **Full Stack Developer Internship** at SheCan!
 
-This project is a **basic fundraising intern portal** built with React on the frontend and a simple Express.js backend API serving dummy data. It fulfills the Round 1 requirements with core features demonstrating full-stack skills.
+---
 
-> ⚠️ **Work in Progress:** This is an initial setup and prototype. The project is currently under development and will be expanded and polished in upcoming phases.
+## 📌 Project Overview
 
-## Features Implemented
+This is a **basic fundraising intern portal** built using **React (frontend)** and **Express.js (backend)**. It fulfills the requirements of **Round 1**, showcasing essential full-stack skills with a focus on simplicity and clarity.
 
-- **Frontend:**
+> ⚠️ **Note:** This is a **work-in-progress** prototype. Features and UI/UX will continue to improve in upcoming development phases.
 
-  - Dummy Login and Signup pages (no real authentication)
-  - Dashboard showing:
-    - Intern name
-    - Dummy referral code (e.g., rohitsinha2025)
-    - Total donations raised (fetched from backend)
-    - Static rewards/unlockables section
-  - Leaderboard page displaying dummy leaderboard data fetched from backend
+---
 
-- **Backend:**
-  - REST API built with Express.js
-  - Returns dummy user data and leaderboard data as JSON
-  - CORS enabled for frontend requests
+## 🚀 Features Implemented
 
-## Tech Stack
+### 🖥️ Frontend (React)
 
-- Frontend: React with Vite, React Router for navigation
-- Backend: Node.js with Express.js
-- No UI framework used to keep it simple and clean
+* Dummy **Login** and **Signup** pages *(no real authentication)*
+* **Dashboard** displaying:
 
-## Running the Project Locally
+  * Intern's name
+  * Dummy referral code (e.g., `rohitsinha2025`)
+  * Total donations raised (fetched from backend)
+  * Static **rewards** / **unlockables** section
+* **Leaderboard** page displaying dummy data from backend
 
-### Start backend server
+### 🌐 Backend (Express.js)
 
-Open a terminal, navigate to the backend folder, and run:
+* RESTful API endpoints serving:
+
+  * Dummy intern data
+  * Dummy leaderboard data
+* CORS enabled for frontend access
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer    | Tech Used                   |
+| -------- | --------------------------- |
+| Frontend | React (Vite), React Router  |
+| Backend  | Node.js, Express.js         |
+| Styling  | Plain CSS (no UI framework) |
+
+---
+
+## ⚙️ Running the Project Locally
+
+> Make sure **Node.js** and **npm** are installed on your machine.
+
+### 🔧 1. Start the Backend Server
 
 ```bash
 cd backend
 npm install
 node server.js
 ```
-````
 
-This will start the backend server on `http://localhost:5000`.
+* The backend server will run at:
+  🌐 **[http://localhost:5000](http://localhost:5000)**
 
-### Start frontend server
+* Access dummy intern data at:
+  🔗 **[http://localhost:5000/api/intern](http://localhost:5000/api/intern)**
 
-Open another terminal, navigate to the frontend folder, and run:
+---
+
+### ⚛️ 2. Start the Frontend Development Server
+
+In a new terminal window:
 
 ```bash
 cd frontend
@@ -57,8 +77,29 @@ npm install
 npm run dev
 ```
 
-This will start the frontend development server, usually at `http://localhost:5173`.
+* The frontend will be accessible at:
+  🌐 **[http://localhost:5173](http://localhost:5173)**
+
+---
+
+## 📂 Folder Structure (Simplified)
 
 ```
-
+project-root/
+├── backend/
+│   ├── server.js
+│   └── (API logic)
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   └── pages/
+    └── (React setup)
 ```
+
+---
+
+## 🙌 Final Note
+
+This is just the beginning! I’m excited to grow through this opportunity and look forward to improving and expanding this project in future rounds.
+
+---
