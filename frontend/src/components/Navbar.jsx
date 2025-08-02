@@ -1,44 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../styles/Navbar.css";
 
 function Navbar() {
   return (
-    <nav style={styles.nav}>
-      <h2 style={styles.logo}>SheCan Intern Portal</h2>
-      <div>
-        <Link to="/" style={styles.link}>
-          Login
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">
+          <h1>SheCan Intern Portal</h1>
         </Link>
-        <Link to="/signup" style={styles.link}>
-          Signup
-        </Link>
-        <Link to="/dashboard" style={styles.link}>
-          Dashboard
-        </Link>
-        <Link to="/leaderboard" style={styles.link}>
-          Leaderboard
-        </Link>
+
+        <div className="navbar-links">
+          <Link to="/" className="nav-link">
+            Login
+          </Link>
+          <Link to="/signup" className="nav-link">
+            Signup
+          </Link>
+          <Link to="/dashboard" className="nav-link">
+            Dashboard
+          </Link>
+          <Link to="/leaderboard" className="nav-link">
+            Leaderboard
+          </Link>
+        </div>
       </div>
     </nav>
   );
 }
-
-const styles = {
-  nav: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "10px 20px",
-    backgroundColor: "#343a40",
-    color: "white",
-  },
-  logo: {
-    margin: 0,
-  },
-  link: {
-    margin: "0 10px",
-    textDecoration: "none",
-    color: "white",
-  },
-};
 
 export default Navbar;

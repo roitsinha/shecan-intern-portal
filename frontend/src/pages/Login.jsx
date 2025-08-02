@@ -1,47 +1,58 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/Login.css";
 
 function Login() {
   return (
-    <div style={styles.container}>
-      <h1>Login</h1>
-      <form style={styles.form}>
-        <input type="email" placeholder="Email" required style={styles.input} />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          style={styles.input}
-        />
-        <button type="submit" style={styles.button}>
-          Login
-        </button>
-      </form>
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <h1>Welcome Back</h1>
+          <p>Sign in to your SheCan Intern Portal account</p>
+        </div>
+
+        <form className="login-form">
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              className="form-input"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              className="form-input"
+              required
+            />
+            <div className="forgot-password">
+              <Link to="/forgot-password">Forgot password?</Link>
+            </div>
+          </div>
+
+          <button type="submit" className="login-button">
+            Login
+          </button>
+        </form>
+
+        <div className="signup-link">
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </div>
+      </div>
+
+      <div className="login-branding">
+        <h2>She Can Foundation</h2>
+        <p>Empowering women through technology and education</p>
+      </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    padding: "40px",
-    textAlign: "center",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    maxWidth: "300px",
-    margin: "auto",
-  },
-  input: {
-    margin: "10px 0",
-    padding: "10px",
-    fontSize: "16px",
-  },
-  button: {
-    padding: "10px",
-    backgroundColor: "#007bff",
-    color: "white",
-    border: "none",
-  },
-};
 
 export default Login;
