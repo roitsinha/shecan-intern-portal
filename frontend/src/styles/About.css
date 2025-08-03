@@ -1,0 +1,117 @@
+.about-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 3rem 2rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+.about-text {
+  flex: 2;
+  min-width: 350px;
+  max-width: 600px;
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.page-title {
+  font-size: 2.8rem;
+  color: black;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.description.main-description {
+  color: #444;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  font-size: 2rem;
+  color: #fd6b3f;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0 0 0.3rem 0;
+  color: #333;
+}
+
+.feature-desc {
+  font-size: 1.05rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 320px;
+  max-height: 600px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-text {
+    max-width: 100%;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .page-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+}

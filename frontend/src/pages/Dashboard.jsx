@@ -1,150 +1,160 @@
 import React, { useEffect, useState } from "react";
-import { getInternData } from "../api/dummyData";
 import "../styles/Dashboard.css";
 
 function Dashboard() {
   const [intern, setIntern] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("overview"); // Now properly used
+  const [activeTab, setActiveTab] = useState("overview");
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    getInternData()
+    fetch("http://localhost:5000/api/intern")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch intern data");
+        return res.json();
+      })
       .then((data) => {
-        if (!data) {
-          throw new Error("No data received");
-        }
         setIntern({
           ...data,
+          donationsRaised: data.totalDonations ?? 0,
           recentActivity: data.recentActivity || [],
         });
+
         setLoading(false);
-        const calculatedProgress =
-          data.currentReferrals && data.nextTierReferrals
-            ? Math.min(
-                100,
-                Math.round(
-                  (data.currentReferrals / data.nextTierReferrals) * 100
-                )
-              )
-            : 0;
-        setProgress(calculatedProgress);
+
+        if (data.currentReferrals && data.nextTierReferrals) {
+          setProgress(
+            Math.min(
+              100,
+              Math.round((data.currentReferrals / data.nextTierReferrals) * 100)
+            )
+          );
+        }
       })
       .catch((err) => {
-        console.error("Failed to load intern data:", err);
         setError(err.message);
         setLoading(false);
       });
   }, []);
 
-  if (loading)
-    return <div className="dashboard-loading">Loading dashboard...</div>;
+  if (loading) return <div className="dashboard-loading">Loading...</div>;
   if (error) return <div className="dashboard-error">Error: {error}</div>;
-  if (!intern) return <div className="dashboard-error">No data available</div>;
 
-  // Tab content rendering function
   const renderTabContent = () => {
-    switch (activeTab) {
-      case "progress":
-        return (
-          <div className="progress-section animate-fade-in">
-            <h3>Your Progress</h3>
-            <div className="progress-bar-container">
-              <div className="progress-bar" style={{ width: `${progress}%` }}>
-                <span className="progress-text">{progress}%</span>
-              </div>
-            </div>
-            <p className="progress-description">
-              {intern.nextTierReferrals - intern.currentReferrals} more
-              referrals needed to reach {intern.nextTier} Tier
-            </p>
-            <div className="referral-share">
-              <h4>Share Your Referral Code</h4>
-              <div className="referral-code-box">
-                {intern.referralCode}
-                <button className="copy-btn">Copy</button>
-              </div>
+    if (activeTab === "progress")
+      return (
+        <div className="progress-section">
+          <h3>Your Progress</h3>
+          <div className="progress-bar-container">
+            <div className="progress-bar" style={{ width: `${progress}%` }}>
+              <span className="progress-text">{progress}%</span>
             </div>
           </div>
-        );
-      case "rewards":
-        return (
-          <div className="rewards-section animate-fade-in">
-            <h3>Your Rewards</h3>
-            <div className="tiers-section">{/* Rewards content here */}</div>
-          </div>
-        );
-      default: // 'overview'
-        return (
-          <div className="impact-section animate-fade-in">
-            <h3>Your Impact</h3>
-            <p>
-              Your {intern.currentReferrals} referrals have helped educate{" "}
-              {intern.childrenHelped} girls.
-            </p>
-            <div className="impact-metrics">
-              <div className="metric">
-                <div className="metric-value">{intern.childrenHelped}</div>
-                <div className="metric-label">Lives Impacted</div>
-              </div>
-              <div className="metric">
-                <div className="metric-value">{intern.schoolsSupported}</div>
-                <div className="metric-label">Schools Supported</div>
-              </div>
+          <p>
+            {intern.nextTierReferrals - intern.currentReferrals} more referrals
+            to reach <strong>{intern.nextTier}</strong> Tier
+          </p>
+          <div className="share-code">
+            <h4>Share Your Referral Code</h4>
+            <div className="code-box">
+              <span>{intern.referralCode}</span>
+              <button
+                className="btn-primary copy-btn"
+                onClick={() =>
+                  navigator.clipboard.writeText(intern.referralCode)
+                }
+              >
+                Copy
+              </button>
             </div>
           </div>
-        );
-    }
+        </div>
+      );
+
+    if (activeTab === "rewards")
+      return (
+        <div className="rewards-section">
+          <h3>Your Rewards</h3>
+          <p>Coming soon...</p>
+        </div>
+      );
+
+    return (
+      <div className="impact-section">
+        <h3>Your Impact</h3>
+        <p>
+          {intern.currentReferrals} referrals have helped educate{" "}
+          <strong>{intern.childrenHelped}</strong> girls.
+        </p>
+        <div className="metrics">
+          <div className="metric">
+            <div className="metric-value">{intern.childrenHelped}</div>
+            <div className="metric-label">Lives Impacted</div>
+          </div>
+          <div className="metric">
+            <div className="metric-value">{intern.schoolsSupported}</div>
+            <div className="metric-label">Schools Supported</div>
+          </div>
+        </div>
+      </div>
+    );
   };
 
   return (
-    <div className="dashboard-container">
-      {/* Welcome Section */}
-      <div className="welcome-section">
-        {/* ... existing welcome section content ... */}
+    <div className="dashboard">
+      <h1>Welcome Back, Intern!</h1>
+      <div className="welcome-box">
+        <span>✅ Welcome, {intern.name}!</span>
+        <p>
+          Your referral code: <strong>{intern.referralCode}</strong>
+        </p>
+        <p>
+          Total Donations:{" "}
+          <strong>
+            ₹
+            {typeof intern.donationsRaised === "number"
+              ? intern.donationsRaised.toLocaleString()
+              : "0"}
+          </strong>
+        </p>
       </div>
 
-      {/* Tab Navigation - Now properly using setActiveTab */}
-      <div className="dashboard-tabs">
+      <div className="tabs">
         <button
-          className={`tab-btn ${activeTab === "overview" ? "active" : ""}`}
+          className={activeTab === "overview" ? "active" : ""}
           onClick={() => setActiveTab("overview")}
         >
           Overview
         </button>
         <button
-          className={`tab-btn ${activeTab === "progress" ? "active" : ""}`}
+          className={activeTab === "progress" ? "active" : ""}
           onClick={() => setActiveTab("progress")}
         >
           My Progress
         </button>
         <button
-          className={`tab-btn ${activeTab === "rewards" ? "active" : ""}`}
+          className={activeTab === "rewards" ? "active" : ""}
           onClick={() => setActiveTab("rewards")}
         >
           Rewards
         </button>
       </div>
 
-      {/* Tab Content - Now properly rendered based on activeTab */}
       <div className="tab-content">{renderTabContent()}</div>
 
-      {/* Recent Activity */}
-      <div className="activity-section">
+      <div className="activity">
         <h3>Recent Activity</h3>
         {intern.recentActivity.length > 0 ? (
-          <ul className="activity-list">
-            {intern.recentActivity.map((activity, index) => (
-              <li key={index} className="activity-item">
-                <span className="activity-icon">✓</span>
-                <span className="activity-text">{activity}</span>
-                <span className="activity-time">2h ago</span>
+          <ul>
+            {intern.recentActivity.map((act, i) => (
+              <li key={i}>
+                <span className="checkmark">✓</span> {act}
               </li>
             ))}
           </ul>
         ) : (
-          <p className="no-activity">No recent activity to display</p>
+          <p>No recent activity to display</p>
         )}
       </div>
     </div>

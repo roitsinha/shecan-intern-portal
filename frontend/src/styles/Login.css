@@ -2,6 +2,7 @@
   display: flex;
   min-height: 100vh;
   background-color: #f9fafb;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .login-card {
@@ -20,13 +21,14 @@
 }
 
 .login-header h1 {
-  color: #7e22ce;
+  color: #111;
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
-.login-header p {
-  color: #6b7280;
+.subtitle {
+  font-size: 1.2rem;
+  color: #555;
 }
 
 .form-group {
@@ -36,7 +38,7 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #4b5563;
+  color: #333;
   font-weight: 500;
 }
 
@@ -46,13 +48,13 @@
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-input:focus {
   outline: none;
-  border-color: #7e22ce;
-  box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.1);
+  border-color: #fd6b3f;
+  box-shadow: 0 0 0 3px rgba(253, 107, 63, 0.15);
 }
 
 .forgot-password {
@@ -61,43 +63,31 @@
 }
 
 .forgot-password a {
-  color: #6b7280;
+  color: #888;
   font-size: 0.875rem;
   text-decoration: none;
 }
 
 .forgot-password a:hover {
-  color: #7e22ce;
+  color: #fd6b3f;
   text-decoration: underline;
 }
 
 .login-button {
   width: 100%;
-  padding: 0.75rem;
-  background-color: #7e22ce;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
   margin-top: 1rem;
-}
-
-.login-button:hover {
-  background-color: #6b21a8;
+  font-size: 1rem;
 }
 
 .signup-link {
   text-align: center;
   margin-top: 2rem;
-  color: #6b7280;
+  color: #555;
 }
 
 .signup-link a {
-  color: #7e22ce;
-  font-weight: 500;
+  color: #fd6b3f;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -105,9 +95,10 @@
   text-decoration: underline;
 }
 
+/* Right-side branding panel */
 .login-branding {
   flex: 1;
-  background: linear-gradient(rgba(126, 34, 206, 0.9), rgba(126, 34, 206, 0.9)),
+  background: linear-gradient(rgba(253, 107, 63, 0.9), rgba(253, 107, 63, 0.9)),
     url("");
   background-size: cover;
   background-position: center;

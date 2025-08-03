@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
-import Leaderboard from "./pages/Leaderboard";
+import Leaderboard from "./pages/Leaderboard"; // Keep this separate if needed
 import Navbar from "./components/Navbar";
 
 function App() {
