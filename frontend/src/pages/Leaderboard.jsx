@@ -7,7 +7,7 @@ function Leaderboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/leaderboard")
+    fetch("https://shecan-intern-portal.onrender.com/api/leaderboard")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch leaderboard data");
         return res.json();

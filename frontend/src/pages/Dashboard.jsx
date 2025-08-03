@@ -9,7 +9,7 @@ function Dashboard() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/intern")
+    fetch("https://shecan-intern-portal.onrender.com/api/intern")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch intern data");
         return res.json();

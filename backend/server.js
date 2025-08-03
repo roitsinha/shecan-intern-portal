@@ -5,8 +5,9 @@ const app = express();
 app.use(cors());
 
 const internData = {
-  name: "Rohit Sinha",
-  referralCode: "rohitsinha2025",
+  name: "Kavya Desai",
+  email: "kavya.desai@example.com",
+  referralCode: "kavyadesai2025",
   totalDonations: 9500,
   currentReferrals: 5,
   nextTierReferrals: 15,
@@ -23,7 +24,7 @@ const internData = {
 };
 
 const leaderboard = [
-  { name: "Rohit Sinha", referralCode: "rohitsinha2025", donations: 9500, highlight: true },
+  { name: "Kavya Desai", referralCode: "kavyadesai2025", donations: 9500, highlight: true },
   { name: "Priya Mehta", referralCode: "priyamehta2025", donations: 8500, highlight: false },
   { name: "Aman Gupta", referralCode: "amangupta2025", donations: 7200, highlight: false },
 ];
