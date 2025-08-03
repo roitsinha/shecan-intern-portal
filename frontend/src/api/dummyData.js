@@ -1,4 +1,4 @@
-const BASE_URL = "https://shecan-intern-portal.onrender.com";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 export const getInternData = async () => {
   try {
@@ -7,10 +7,10 @@ export const getInternData = async () => {
     return await response.json();
   } catch (error) {
     console.error(error);
-    // Fallback dummy data if fetch fails
+    // Fallback dummy data
     return {
-      name: "Rohit Sinha",
-      referralCode: "rohitsinha2025",
+      name: "Abhishek Sinha",
+      referralCode: "abhisheksinha2025",
       totalDonations: 4500,
       currentReferrals: 5,
       nextTierReferrals: 15,
@@ -36,7 +36,7 @@ export const getLeaderboardData = async () => {
     return await response.json();
   } catch (error) {
     console.error(error);
-    // Fallback dummy leaderboard data if fetch fails
+    // Fallback dummy leaderboard data
     return [
       { 
         name: "Priya Sharma", 
@@ -58,7 +58,7 @@ export const getLeaderboardData = async () => {
       },
       { 
         name: "Abhishek Sinha", 
-        referralCode: "rohitsinha2025", 
+        referralCode: "abhisheksinha2025", 
         donations: 4500,
         highlight: true  
       },
